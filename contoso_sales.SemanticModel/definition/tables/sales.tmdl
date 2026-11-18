@@ -1,0 +1,190 @@
+table sales
+	lineageTag: cccad471-0ba1-4d77-b8c6-c0f31d53f135
+	sourceLineageTag: [dbo].[sales]
+
+	/// Total quantity of items sold across all transactions.
+	measure 'Total Quantity' = SUM('sales'[Quantity])
+		formatString: #,0
+		displayFolder: Sales
+		lineageTag: d074ea12-28ad-40bb-832c-3437538b2387
+
+	/// Total net sales amount aggregated over all transactions.
+	measure 'Sales Amount' = SUM('sales'[NetPrice])
+		formatString: #,0.00
+		displayFolder: Sales
+		lineageTag: 3b19b7fb-2ea3-4425-a963-e3fc06b1490b
+
+	/// Total cost of goods sold, calculated as unit cost times quantity.
+	measure 'Total Cost' = SUMX('sales', 'sales'[UnitCost] * 'sales'[Quantity])
+		formatString: #,0.00
+		displayFolder: Profitability
+		lineageTag: da1c3416-b78c-42d1-a21f-29569b1c4390
+
+	/// Gross profit calculated as sales amount minus total cost.
+	measure 'Gross Profit' = [Sales Amount] - [Total Cost]
+		formatString: #,0.00
+		displayFolder: Profitability
+		lineageTag: 42de76d4-a1fb-4329-8710-06320d0f4fbe
+
+	/// Gross margin percentage calculated as gross profit divided by sales amount.
+	measure 'Gross Margin %' = DIVIDE([Gross Profit], [Sales Amount])
+		formatString: 0.00 %;-0.00 %;0.00 %
+		displayFolder: Profitability
+		lineageTag: 23a44da9-3da2-4962-9d46-35af2b498098
+
+	/// Average selling price per unit, calculated as sales amount divided by total quantity sold.
+	measure 'Average Selling Price' = DIVIDE([Sales Amount], [Total Quantity])
+		formatString: #,0.00
+		displayFolder: Sales
+		lineageTag: 22f875da-e179-4fef-8fc4-c0834d6b736f
+
+	column OrderKey
+		dataType: int64
+		formatString: 0
+		lineageTag: c92b64f8-1351-4d29-9686-49877f561afd
+		sourceLineageTag: OrderKey
+		summarizeBy: count
+		sourceColumn: OrderKey
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column LineNumber
+		dataType: string
+		lineageTag: 39259aae-629b-4c02-8025-05f2a1574fe8
+		sourceLineageTag: LineNumber
+		summarizeBy: none
+		sourceColumn: LineNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b6517e73-1a6d-4ef5-880c-539b23b8cb6d
+		sourceLineageTag: OrderDate
+		summarizeBy: none
+		sourceColumn: OrderDate
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DeliveryDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8e98f89c-562e-49e3-a4ca-8f65eb19d6f5
+		sourceLineageTag: DeliveryDate
+		summarizeBy: none
+		sourceColumn: DeliveryDate
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CustomerKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 86f6c169-8e5a-417f-b1f0-f67f684c189a
+		sourceLineageTag: CustomerKey
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column StoreKey
+		dataType: string
+		lineageTag: 5afc7591-d477-41b7-86c3-fead4df0f8f3
+		sourceLineageTag: StoreKey
+		summarizeBy: none
+		sourceColumn: StoreKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductKey
+		dataType: int64
+		formatString: 0
+		lineageTag: b1b22fd2-609a-4ac2-bf87-6f4ad917b319
+		sourceLineageTag: ProductKey
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: ad938998-6014-4e65-b190-fc82c5dd611c
+		sourceLineageTag: Quantity
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitPrice
+		dataType: string
+		lineageTag: bb8c5896-0d57-4d46-9794-f37247a29319
+		sourceLineageTag: UnitPrice
+		summarizeBy: none
+		sourceColumn: UnitPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column NetPrice
+		dataType: double
+		lineageTag: 36698984-206c-423b-85cf-2becc7643ba9
+		sourceLineageTag: NetPrice
+		summarizeBy: sum
+		sourceColumn: NetPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UnitCost
+		dataType: double
+		lineageTag: a401266c-c9b3-4b43-aa04-603020ed431b
+		sourceLineageTag: UnitCost
+		summarizeBy: sum
+		sourceColumn: UnitCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CurrencyCode
+		dataType: string
+		lineageTag: e180340c-fdb1-477a-bcda-888de9f8d828
+		sourceLineageTag: CurrencyCode
+		summarizeBy: none
+		sourceColumn: CurrencyCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExchangeRate
+		dataType: double
+		lineageTag: cabe34cf-8236-43eb-8b2a-cceb50452fef
+		sourceLineageTag: ExchangeRate
+		summarizeBy: sum
+		sourceColumn: ExchangeRate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition sales = entity
+		mode: directLake
+		source
+			entityName: sales
+			schemaName: dbo
+			expressionSource: 'DirectLake - dp600_dw'
+

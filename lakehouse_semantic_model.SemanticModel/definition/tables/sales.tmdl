@@ -1,0 +1,138 @@
+table sales
+	lineageTag: 137b2789-b6f4-4813-a92a-8691a7b5f931
+	sourceLineageTag: [contoso].[sales]
+
+	column OrderKey
+		dataType: string
+		lineageTag: 15a7b875-8bd3-4adf-8baa-0d1159a9f0a5
+		sourceLineageTag: OrderKey
+		summarizeBy: none
+		sourceColumn: OrderKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column LineNumber
+		dataType: string
+		lineageTag: 8eb81310-6c15-4bc8-9e08-77d939b0576b
+		sourceLineageTag: LineNumber
+		summarizeBy: none
+		sourceColumn: LineNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDate
+		dataType: string
+		lineageTag: e1ebebe2-4da9-454b-b423-140509f6c19d
+		sourceLineageTag: OrderDate
+		summarizeBy: none
+		sourceColumn: OrderDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column DeliveryDate
+		dataType: string
+		lineageTag: e688ed85-842a-47f8-9536-e9d9df317e4b
+		sourceLineageTag: DeliveryDate
+		summarizeBy: none
+		sourceColumn: DeliveryDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerKey
+		dataType: string
+		lineageTag: b8bfdc0c-4b80-4e4b-84d2-4ece7c3ff1b8
+		sourceLineageTag: CustomerKey
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column StoreKey
+		dataType: string
+		lineageTag: 749d7115-3d33-44b2-9310-7c5cb92f7393
+		sourceLineageTag: StoreKey
+		summarizeBy: none
+		sourceColumn: StoreKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductKey
+		dataType: int64
+		formatString: 0
+		lineageTag: bf50fc2e-3184-4372-bd4c-33de368eeff5
+		sourceLineageTag: ProductKey
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 8c2fc652-91c7-45e3-bd27-84ce8aaf9b6c
+		sourceLineageTag: Quantity
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitPrice
+		dataType: string
+		lineageTag: 62fa9aaf-cdc8-4eca-98ef-5929902cea50
+		sourceLineageTag: UnitPrice
+		summarizeBy: none
+		sourceColumn: UnitPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column NetPrice
+		dataType: double
+		lineageTag: 37972948-cbd5-471f-9d2b-10f9df26108d
+		sourceLineageTag: NetPrice
+		summarizeBy: sum
+		sourceColumn: NetPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UnitCost
+		dataType: double
+		lineageTag: 8b8d27bb-a8ce-4272-a03e-59d72c2f9670
+		sourceLineageTag: UnitCost
+		summarizeBy: sum
+		sourceColumn: UnitCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CurrencyCode
+		dataType: string
+		lineageTag: 90b848c2-effe-474f-9fa6-48cf993c6dd4
+		sourceLineageTag: CurrencyCode
+		summarizeBy: none
+		sourceColumn: CurrencyCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExchangeRate
+		dataType: double
+		lineageTag: 1f8878ad-09c5-40d7-932e-96344c034fb0
+		sourceLineageTag: ExchangeRate
+		summarizeBy: sum
+		sourceColumn: ExchangeRate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition sales = entity
+		mode: directLake
+		source
+			entityName: sales
+			schemaName: contoso
+			expressionSource: 'DirectLake - dp600_lh'
+

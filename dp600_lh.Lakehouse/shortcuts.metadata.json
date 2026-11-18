@@ -1,0 +1,14 @@
+[
+  {
+    "name": "10M",
+    "path": "/Files",
+    "target": {
+      "type": "AdlsGen2",
+      "adlsGen2": {
+        "connectionId": "76cd0515-361f-402f-aebd-e5e37492165f",
+        "location": "https://dsdatalakedemo.dfs.core.windows.net",
+        "subpath": "/contoso/10M"
+      }
+    }
+  }
+]

@@ -1,0 +1,50 @@
+table KPIs
+	lineageTag: 0055f570-99fe-410b-a68b-51a9bf37f218
+
+	column KPIs
+		lineageTag: 3ec2ceff-0831-418e-a1c3-84cc1290a5a2
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'KPIs Order'
+
+		relatedColumnDetails
+			groupByColumn: 'KPIs Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KPIs Fields'
+		isHidden
+		lineageTag: a49cc18d-039f-48f2-977e-8db9b8c1a3a5
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'KPIs Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KPIs Order'
+		isHidden
+		formatString: 0
+		lineageTag: 44966076-205e-4911-a14a-b495f85e05f5
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition KPIs = calculated
+		mode: import
+		source =
+				{
+				    ("Profit", NAMEOF('Sales'[Profit]), 0),
+				    ("Profit Margin", NAMEOF('Sales'[Profit Margin]), 1),
+				    ("Sales Amount", NAMEOF('Sales'[Sales Amount]), 2),
+				    ("Sales Cost", NAMEOF('Sales'[Sales Cost]), 3)
+				}
+
+	annotation PBI_Id = c75f7e36536d48be89bec967ebd8efbc
+

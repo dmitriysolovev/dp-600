@@ -1,0 +1,51 @@
+table Dimension
+	lineageTag: b28e2129-9888-4d57-baab-44ccf2961fdb
+
+	column Dimension
+		lineageTag: 0de96258-f1ac-485d-bc02-1fc9a70a54e4
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Dimension Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Dimension Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dimension Fields'
+		isHidden
+		lineageTag: 6430d777-756d-4f8f-b797-0b6669b258cd
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Dimension Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dimension Order'
+		isHidden
+		formatString: 0
+		lineageTag: 1ef8376d-ce86-4d9f-8120-dff31a4d7b7a
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dimension = calculated
+		mode: import
+		source =
+				{
+				    ("Year", NAMEOF('Date'[Year]), 0),
+				    ("Month", NAMEOF('Date'[Month]), 1),
+				    ("Country", NAMEOF('Region'[Country]), 2),
+				    ("Category", NAMEOF('Product'[Category]), 3),
+				    ("Color", NAMEOF('Product'[Color]), 4)
+				}
+
+	annotation PBI_Id = a7c547c5ac82458cac0ad33f8c55dad6
+

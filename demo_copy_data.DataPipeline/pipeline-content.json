@@ -1,0 +1,242 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "DelimitedTextSource",
+            "formatSettings": {
+              "type": "DelimitedTextReadSettings"
+            },
+            "storeSettings": {
+              "type": "AzureBlobFSReadSettings",
+              "recursive": true,
+              "enablePartitionDiscovery": false
+            },
+            "datasetSettings": {
+              "type": "DelimitedText",
+              "typeProperties": {
+                "location": {
+                  "type": "AzureBlobFSLocation",
+                  "fileSystem": "contoso",
+                  "folderPath": "10M",
+                  "fileName": "sales.csv"
+                },
+                "columnDelimiter": ",",
+                "quoteChar": "\"",
+                "escapeChar": "\\",
+                "firstRowAsHeader": true
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "76cd0515-361f-402f-aebd-e5e37492165f"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "OverwriteSchema",
+            "applyVOrder": false,
+            "enableTimestampNtz": false,
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "schema": "contoso",
+                "table": "sales"
+              },
+              "schema": [],
+              "connectionSettings": {
+                "name": "dp600_lh",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "8a9dba6d-72ee-a4fb-4b81-497219181ba2",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Tables"
+                  },
+                  "externalReferences": {
+                    "connection": "02e11979-1f15-4ebf-bca5-a7d0562ae396"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "mappings": [
+              {
+                "source": {
+                  "name": "OrderKey",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "OrderKey",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "LineNumber",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "LineNumber",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "OrderDate",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "OrderDate",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "DeliveryDate",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "DeliveryDate",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "CustomerKey",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "CustomerKey",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "StoreKey",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "StoreKey",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "ProductKey",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "ProductKey",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Quantity",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Quantity",
+                  "physicalType": "integer"
+                }
+              },
+              {
+                "source": {
+                  "name": "UnitPrice",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "UnitPrice",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "NetPrice",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "NetPrice",
+                  "physicalType": "decimal",
+                  "scale": 18,
+                  "precision": 38
+                }
+              },
+              {
+                "source": {
+                  "name": "UnitCost",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "UnitCost",
+                  "physicalType": "decimal",
+                  "scale": 18,
+                  "precision": 38
+                }
+              },
+              {
+                "source": {
+                  "name": "CurrencyCode",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "CurrencyCode",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "ExchangeRate",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "ExchangeRate",
+                  "physicalType": "decimal",
+                  "scale": 18,
+                  "precision": 38
+                }
+              }
+            ],
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Copy_contoso_sales",
+        "dependsOn": []
+      }
+    ]
+  }
+}

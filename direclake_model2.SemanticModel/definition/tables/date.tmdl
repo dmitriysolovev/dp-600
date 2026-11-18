@@ -1,0 +1,172 @@
+table date
+	lineageTag: 06149eb3-b13d-4cce-bdd6-0c119a2d0f4b
+	sourceLineageTag: [dbo].[date]
+
+	column Date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 094f9761-3243-4411-afa7-d21038883822
+		sourceLineageTag: Date
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: f0b8e471-ee60-4b36-b757-9ce02b66301c
+		sourceLineageTag: DateKey
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: b582a147-8a39-4719-85c1-9aba8cc736cb
+		sourceLineageTag: Year
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearQuarter
+		dataType: string
+		lineageTag: b6ed77a7-1919-45fa-b8b4-133098afd475
+		sourceLineageTag: YearQuarter
+		summarizeBy: none
+		sourceColumn: YearQuarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearQuarterNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: ad6d20da-6914-44e1-be27-81a6f43e75ea
+		sourceLineageTag: YearQuarterNumber
+		summarizeBy: none
+		sourceColumn: YearQuarterNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		dataType: string
+		lineageTag: afa44599-4ba1-497f-ac6b-bb7037b917b7
+		sourceLineageTag: Quarter
+		summarizeBy: none
+		sourceColumn: Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonth
+		dataType: string
+		lineageTag: fe28ae37-d900-48e0-95a2-70675240d289
+		sourceLineageTag: YearMonth
+		summarizeBy: none
+		sourceColumn: YearMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonthShort
+		dataType: string
+		lineageTag: f0e5b113-e738-4969-84fb-864f2702405b
+		sourceLineageTag: YearMonthShort
+		summarizeBy: none
+		sourceColumn: YearMonthShort
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonthNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: dbb42633-9336-42c9-aaa3-77b457f5260c
+		sourceLineageTag: YearMonthNumber
+		summarizeBy: none
+		sourceColumn: YearMonthNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: 6cb28cc6-bd81-4433-b407-622e9c6e9f2d
+		sourceLineageTag: Month
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthShort
+		dataType: string
+		lineageTag: 35ee2e67-b342-449a-ad7d-772bf81d0d84
+		sourceLineageTag: MonthShort
+		summarizeBy: none
+		sourceColumn: MonthShort
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 743cc890-ab11-418b-af4a-76fae9865e03
+		sourceLineageTag: MonthNumber
+		summarizeBy: none
+		sourceColumn: MonthNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayofWeek
+		dataType: string
+		lineageTag: 21ef7f7d-04cd-4e47-90be-86bb4e5aa464
+		sourceLineageTag: DayofWeek
+		summarizeBy: none
+		sourceColumn: DayofWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayofWeekShort
+		dataType: string
+		lineageTag: 019af236-1e8b-45c3-9837-247891961d47
+		sourceLineageTag: DayofWeekShort
+		summarizeBy: none
+		sourceColumn: DayofWeekShort
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayofWeekNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: b60994eb-9837-4f6c-a33d-f3e85ff84d22
+		sourceLineageTag: DayofWeekNumber
+		summarizeBy: none
+		sourceColumn: DayofWeekNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkingDay
+		dataType: int64
+		formatString: 0
+		lineageTag: 756c4352-18d2-4e1d-84e1-a6f015190708
+		sourceLineageTag: WorkingDay
+		summarizeBy: none
+		sourceColumn: WorkingDay
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkingDayNumber
+		dataType: string
+		lineageTag: f052e462-eda1-4809-99ff-847809a0a783
+		sourceLineageTag: WorkingDayNumber
+		summarizeBy: none
+		sourceColumn: WorkingDayNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	partition date = entity
+		mode: directLake
+		source
+			entityName: date
+			schemaName: dbo
+			expressionSource: 'DirectLake - dp600_dw'
+

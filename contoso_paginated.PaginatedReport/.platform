@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "PaginatedReport",
+    "displayName": "contoso_paginated"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2bb84248-caab-a140-4b59-8e196c964e89"
+  }
+}

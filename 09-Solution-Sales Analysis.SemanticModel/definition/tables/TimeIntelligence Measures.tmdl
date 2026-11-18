@@ -1,0 +1,123 @@
+table 'TimeIntelligence Measures'
+	lineageTag: 947d65bd-ad88-4e63-84ad-a2ceb0f17ff6
+
+	/// Calculates Sales Amount from the beginning of the year to the latest date in the current filter context.
+	measure 'Sales Amount YTD' = TOTALYTD([Sales Amount], 'Date'[Date])
+		displayFolder: 'Sales Amount'
+		lineageTag: 15dd4e3c-affb-415e-8026-d50d4dbc43a9
+
+		formatStringDefinition =
+				VAR _Value = ABS([Sales Amount YTD])
+				RETURN
+				    SWITCH(
+				        TRUE(),
+				        _Value >= 1000000000, "£#,0.0,,,""B"";(£#,0.0,,,""B"");£0",
+				        _Value >= 1000000, "£#,0.0,,""M"";(£#,0.0,,""M"");£0",
+				        _Value >= 1000, "£#,0.0,""K"";(£#,0.0,""K"");£0",
+				        "£#,##0;(£#,##0);£0"
+				    )
+
+	/// Calculates Sales Amount from the beginning of the month to the latest date in the current filter context.
+	measure 'Sales Amount MTD' = TOTALMTD([Sales Amount], 'Date'[Date])
+		displayFolder: 'Sales Amount'
+		lineageTag: 9f3c6987-7e00-4120-874f-b1261534f98d
+
+		formatStringDefinition =
+				VAR _Value = ABS([Sales Amount MTD])
+				RETURN
+				    SWITCH(
+				        TRUE(),
+				        _Value >= 1000000000, "£#,0.0,,,""B"";(£#,0.0,,,""B"");£0",
+				        _Value >= 1000000, "£#,0.0,,""M"";(£#,0.0,,""M"");£0",
+				        _Value >= 1000, "£#,0.0,""K"";(£#,0.0,""K"");£0",
+				        "£#,##0;(£#,##0);£0"
+				    )
+
+	/// Calculates Sales Amount from the beginning of the quarter to the latest date in the current filter context.
+	measure 'Sales Amount QTD' = TOTALQTD([Sales Amount], 'Date'[Date])
+		displayFolder: 'Sales Amount'
+		lineageTag: ff2f50c7-750e-4e9b-8699-a3473a141909
+
+		formatStringDefinition =
+				VAR _Value = ABS([Sales Amount QTD])
+				RETURN
+				    SWITCH(
+				        TRUE(),
+				        _Value >= 1000000000, "£#,0.0,,,""B"";(£#,0.0,,,""B"");£0",
+				        _Value >= 1000000, "£#,0.0,,""M"";(£#,0.0,,""M"");£0",
+				        _Value >= 1000, "£#,0.0,""K"";(£#,0.0,""K"");£0",
+				        "£#,##0;(£#,##0);£0"
+				    )
+
+	/// Calculates Sales Amount for the equivalent period in the previous year.
+	measure 'Sales Amount PY' = CALCULATE([Sales Amount], SAMEPERIODLASTYEAR('Date'[Date]))
+		displayFolder: 'Sales Amount'
+		lineageTag: 35eb3d4b-3816-4c07-92eb-675a79bdd709
+
+		formatStringDefinition =
+				VAR _Value = ABS([Sales Amount PY])
+				RETURN
+				    SWITCH(
+				        TRUE(),
+				        _Value >= 1000000000, "£#,0.0,,,""B"";(£#,0.0,,,""B"");£0",
+				        _Value >= 1000000, "£#,0.0,,""M"";(£#,0.0,,""M"");£0",
+				        _Value >= 1000, "£#,0.0,""K"";(£#,0.0,""K"");£0",
+				        "£#,##0;(£#,##0);£0"
+				    )
+
+	/// Calculates Sales Cost from the beginning of the year to the latest date in the current filter context.
+	measure 'Sales Cost YTD' = TOTALYTD([Sales Cost], 'Date'[Date])
+		displayFolder: 'Sales Cost'
+		lineageTag: 377d9544-09fc-412b-b3bd-c3537fb882c4
+
+		formatStringDefinition =
+				VAR _Value = ABS([Sales Cost YTD])
+				RETURN
+				    SWITCH(
+				        TRUE(),
+				        _Value >= 1000000000, "£#,0.0,,,""B"";(£#,0.0,,,""B"");£0",
+				        _Value >= 1000000, "£#,0.0,,""M"";(£#,0.0,,""M"");£0",
+				        _Value >= 1000, "£#,0.0,""K"";(£#,0.0,""K"");£0",
+				        "£#,##0;(£#,##0);£0"
+				    )
+
+	/// Calculates Sales Cost from the beginning of the month to the latest date in the current filter context.
+	measure 'Sales Cost MTD' = TOTALMTD([Sales Cost], 'Date'[Date])
+		displayFolder: 'Sales Cost'
+		lineageTag: 2111e0a2-93c1-472c-ac17-1a573b0c40a9
+
+		formatStringDefinition =
+				VAR _Value = ABS([Sales Cost MTD])
+				RETURN
+				    SWITCH(
+				        TRUE(),
+				        _Value >= 1000000000, "£#,0.0,,,""B"";(£#,0.0,,,""B"");£0",
+				        _Value >= 1000000, "£#,0.0,,""M"";(£#,0.0,,""M"");£0",
+				        _Value >= 1000, "£#,0.0,""K"";(£#,0.0,""K"");£0",
+				        "£#,##0;(£#,##0);£0"
+				    )
+
+	/// Calculates Sales Cost from the beginning of the quarter to the latest date in the current filter context.
+	measure 'Sales Cost QTD'
+		lineageTag: 379691f8-52ca-4e6c-8c7d-5152aa07918f
+
+	measure 'Sales Cost PY' = CALCULATE([Sales Cost], SAMEPERIODLASTYEAR('Date'[Date]))
+		displayFolder: 'Sales Cost'
+		lineageTag: 59caa1a5-5ba6-48f1-8835-1ac2af0cae5a
+
+	measure 'Profit YTD' = TOTALYTD([Profit], 'Date'[Date])
+		displayFolder: 'Profit'
+		lineageTag: eef4a6b1-ed43-476e-8d3d-8131de216f19
+
+	measure 'Profit MTD' = TOTALMTD([Profit], 'Date'[Date])
+		displayFolder: 'Profit'
+		lineageTag: 7eb35389-e8e1-41d7-b3a7-4659e3af0406
+
+	measure 'Profit QTD' = TOTALQTD([Profit], 'Date'[Date])
+		displayFolder: 'Profit'
+		lineageTag: f9f846d2-3a0e-4746-bb10-7d253d921a09
+
+	measure 'Profit PY' = CALCULATE([Profit], SAMEPERIODLASTYEAR('Date'[Date]))
+		displayFolder: 'Profit'
+		lineageTag: 0bbd45d0-53a3-4ef6-a033-56fdc0f0c942
+

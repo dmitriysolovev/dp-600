@@ -1,0 +1,31 @@
+/// Used for Time Intelligence calculations like YTD, PY, etc
+/// 
+table CG_Time_Intelligence
+	lineageTag: dcab884c-3281-4a91-b41b-bb6062ecae7d
+
+	calculationGroup
+
+		calculationItem CY = SELECTEDMEASURE()
+
+		calculationItem PY = CALCULATE(SELECTEDMEASURE(),DATEADD('Date'[Date],-1,YEAR))
+
+		calculationItem YTD = CALCULATE(SELECTEDMEASURE(),DATESYTD('Date'[Date],"06/30"))
+
+	column 'Calculation group column'
+		dataType: string
+		lineageTag: f369ea8b-b22b-4fe3-931c-b15d54b5a995
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		formatString: 0
+		lineageTag: 439d6bda-8ccc-49f5-ab3a-7d0e7b87023a
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+

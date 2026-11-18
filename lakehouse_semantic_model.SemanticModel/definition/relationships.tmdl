@@ -1,0 +1,5 @@
+relationship 64ec1cbd-0ccd-8b2a-2d61-f395e88b5285
+	relyOnReferentialIntegrity
+	fromColumn: sales.ProductKey
+	toColumn: product.ProductKey
+

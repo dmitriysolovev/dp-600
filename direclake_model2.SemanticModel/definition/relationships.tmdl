@@ -1,0 +1,10 @@
+relationship 48f68e13-42db-cd0a-2c0c-e6485ec639e1
+	relyOnReferentialIntegrity
+	fromColumn: sales.OrderDate
+	toColumn: date.Date
+
+relationship 4534fe1f-8140-b645-fa0d-4320debdf089
+	relyOnReferentialIntegrity
+	fromColumn: sales.ProductKey
+	toColumn: product.ProductKey
+
