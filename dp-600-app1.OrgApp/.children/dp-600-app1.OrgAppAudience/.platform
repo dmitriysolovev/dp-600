@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "OrgAppAudience",
+    "displayName": "dp-600-app1"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ccdb98b5-e829-ae5c-4042-18c05919800f"
+  }
+}

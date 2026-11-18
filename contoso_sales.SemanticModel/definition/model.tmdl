@@ -10,10 +10,12 @@ annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBI_QueryOrder = ["DirectLake - dp600_dw"]
 
-annotation PBI_ProTooling = ["DirectLakeOnOneLakeInWeb","WebModelingEdit","MCP-PBIModeling-Hosted"]
+annotation PBI_ProTooling = ["DirectLakeOnOneLakeInWeb","WebModelingEdit","MCP-PBIModeling-Hosted","CopilotTooling"]
 
 ref table customer
 ref table date
 ref table product
 ref table sales
+
+ref cultureInfo en-US
 

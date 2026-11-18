@@ -1,0 +1,44 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/orgapp/definition/orgAppDefinition/2.0.0/schema.json",
+  "settings": {},
+  "elements": [
+    {
+      "elementType": "overview",
+      "elementId": "6ae1e3b9-0cb4-4c7f-81d7-d57bdabc977f",
+      "header": {
+        "title": "Test Org app",
+        "body": "This app contains:\n- notebook\n-reports\n-paginated report",
+        "showTheme": false
+      },
+      "displayName": "My Best App"
+    },
+    {
+      "elementType": "item",
+      "elementId": "7211d79c-8d9e-4ac1-b97b-eae385bff3ee",
+      "itemType": "PaginatedReport",
+      "itemLogicalId": "2bb84248-caab-a140-4b59-8e196c964e89",
+      "displayName": "contoso_paginated"
+    },
+    {
+      "elementType": "item",
+      "elementId": "d086e9d9-4327-46c4-b050-0bd94f44c4ff",
+      "itemType": "Report",
+      "itemLogicalId": "7efda6ad-0aec-a1f6-43fc-0534bdef2308",
+      "displayName": "sales overview"
+    },
+    {
+      "elementType": "section",
+      "elementId": "903c5ac0-814d-46db-972d-8895119c58fc",
+      "elements": [
+        {
+          "elementType": "item",
+          "elementId": "16f1b6a0-c675-41a3-a6a1-868c6cf94b26",
+          "itemType": "Notebook",
+          "itemLogicalId": "41b5cb38-60b2-a59d-40e5-64a9863a3fd8",
+          "displayName": "demo_contoso"
+        }
+      ],
+      "displayName": "Notebooks"
+    }
+  ]
+}

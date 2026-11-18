@@ -134,10 +134,13 @@ table customer
 
 	column ZipCode
 		dataType: string
+		isHidden
 		lineageTag: f2fb0155-aff8-400c-b629-6cc8b68cf180
 		sourceLineageTag: ZipCode
 		summarizeBy: none
 		sourceColumn: ZipCode
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -199,10 +202,13 @@ table customer
 
 	column Vehicle
 		dataType: string
+		isHidden
 		lineageTag: fcfbdec3-22c9-4438-a8d3-2f4e8d2d6e45
 		sourceLineageTag: Vehicle
 		summarizeBy: none
 		sourceColumn: Vehicle
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
