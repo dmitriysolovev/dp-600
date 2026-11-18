@@ -39,9 +39,6 @@
       }
     ]
   },
-  "publicCustomVisuals": [
-    "htmlContent443BE3AD55E043BF878BED274D3A6855"
-  ],
   "resourcePackages": [
     {
       "name": "SharedResources",
@@ -61,11 +58,6 @@
         {
           "name": "AdventureWorksLogo9335593362734207.jpg",
           "path": "AdventureWorksLogo9335593362734207.jpg",
-          "type": "Image"
-        },
-        {
-          "name": "rep_layout6259454530474118.png",
-          "path": "rep_layout6259454530474118.png",
           "type": "Image"
         }
       ]
